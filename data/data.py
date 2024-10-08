@@ -30,7 +30,7 @@ def data_map_process(path):
 
     json_data = read_data_list(path)
 
-    # 统计共有多少类别
+    # 统计类别
     classes = []
     for line in json_data:
         for label_name in line['label'].keys():
