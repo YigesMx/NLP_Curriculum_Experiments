@@ -1,6 +1,14 @@
 ---
 title: "实验报告: HMM"
 author: "毛一戈"
+documentclass:
+    - ctexart
+# set page margin
+geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
+# enable 首行缩进，中文段落缩进两个字符
+indent: true
+# number section
+numbersections: true
 ---
 
 # 摘要
@@ -12,7 +20,7 @@ author: "毛一戈"
 
 这里讨论一个离散状态、离散时间的系统（连续状态或连续时间的系统的马尔科夫模型是由其他学者完善提出的，这里不做讨论）。
 
-假设这个系统有 $N$ 个状态 $S_1,S_2, \cdots,S_N$，随着时间的推移，该系统从某一状态转移到另一状态。如果用 $q_t$ 表示系统在时间 $t$ 的状态变量，那么，$t$ 时刻的状态取值为 $S_j\left(1\leq j\leq N\right)$ 的概率取决于前 $t-1$ 个时刻 $(1,2,\cdots,t-1) $的状态，该概率为：
+假设这个系统有 $N$ 个状态 $S_1,S_2, \cdots,S_N$，随着时间的推移，该系统从某一状态转移到另一状态。如果用 $q_t$ 表示系统在时间 $t$ 的状态变量，那么，$t$ 时刻的状态取值为 $S_j\left(1\leq j\leq N\right)$ 的概率取决于前 $t-1$ 个时刻 $(1,2,\cdots,t-1)$ 的状态，该概率为：
 
 $$P(q_t=S_j\mid q_{t-1}=S_i,q_{t-2}=S_k,\cdots)$$
 
@@ -61,7 +69,7 @@ $$
 
 以下图展示了一个简单的马尔科夫链的状态转移图：
 
-![马尔科夫链](/assets/markov_chain.png)
+![马尔科夫链](./assets/markov_chain.png)
 
 我们令在时间 $t$ 的状态概率分布为 $\alpha_t = [\alpha_t(i)]$，其中 $\alpha_t(i)$ 表示在时间 $t$ 系统处于状态 $S_i$ 的概率。根据马尔科夫链的定义，我们可以得到状态概率的递推公式：
 
@@ -90,7 +98,7 @@ $$
 
 以下图展示了一个简单的隐马尔科夫模型的状态转移图：
 
-![隐马尔科夫模型](/assets/hmm.png)
+![隐马尔科夫模型](./assets/hmm.png)
 
 在隐马尔科夫模型中，我们通常关心以下四个问题：
 
@@ -139,7 +147,7 @@ $$ P(O|\lambda) = \sum_{i=1}^N \pi_i b_i(o_1) \beta_1(i) $$
 
 以下是前向算法的示意图，比较抽象，但可以辅助公式的理解：
 
-![前向算法](/assets/forward.png)
+![前向算法](./assets/forward.png)
 
 ### 解码问题：维特比算法
 
@@ -181,7 +189,7 @@ $$ q_t^* = \psi_{t+1}(q_{t+1}^*) $$
 
 以下是维特比算法的示意图，依然比较抽象，但可以结合对比前面前向算法的示意图和公式，辅助维特比算法的理解：
 
-![维特比算法](/assets/viterbi.png)
+![维特比算法](./assets/viterbi.png)
 
 ### 学习问题：参数估计
 
@@ -195,7 +203,8 @@ $$ q_t^* = \psi_{t+1}(q_{t+1}^*) $$
 
 ```json
 {
-    'text': '浙商银行企业信贷部叶老桂博士则从另一个角度对五道门槛进行了解读。叶老桂认为，对目前国内商业银行而言，',
+    'text': '浙商银行企业信贷部叶老桂博士则从另一个角度对五道门槛进行了解读。叶老桂认为，
+    对目前国内商业银行而言，',
     'label': {
         'name': {'叶老桂': [[9, 11]]},
         'company': {'浙商银行': [[0, 3]]}
@@ -247,7 +256,8 @@ def data_map_process(path):
 ```python
 [
     ['浙', '商', '银', '行', '企', '业', '信', '贷', '部', '叶', '老', '桂'], 
-    ['B-company', 'I-company', 'I-company', 'I-company', 'O', 'O', 'O', 'O', 'O', 'B-name', 'I-name', 'I-name']
+    ['B-company', 'I-company', 'I-company', 'I-company', 'O', 'O', 'O', 'O', 'O', 'B-name',
+     'I-name', 'I-name']
 ]
 ```
 
