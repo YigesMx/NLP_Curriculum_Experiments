@@ -3,11 +3,8 @@ title: "实验报告: HMM"
 author: "毛一戈"
 documentclass:
     - ctexart
-# set page margin
 geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
-# enable 首行缩进，中文段落缩进两个字符
 indent: true
-# number section
 numbersections: true
 ---
 
