@@ -6,6 +6,7 @@ documentclass:
 geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
 indent: true
 numbersections: true
+# pandoc README.md -o report.pdf --pdf-engine=xelatex
 ---
 
 # 摘要
